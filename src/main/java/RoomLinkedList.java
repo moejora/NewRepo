@@ -72,7 +72,6 @@ public class RoomLinkedList {
     if(head != null){
     head.enterRoom(hero);
     }
- //   showRoom(hero,true);
     }
     }
 
@@ -86,7 +85,6 @@ public class RoomLinkedList {
     if(head != null){
     head.enterRoom(hero);
     }
- //   showRoom(hero,true);
     }
     }
 }

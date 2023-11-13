@@ -1,10 +1,9 @@
-import java.util.Random;
 import java.util.Scanner;
 
 public class GameEngine {
 
     public void startGame() {
-        int numRooms = 50; // Change this to the desired number of rooms
+        int numRooms = 50; 
         RoomLinkedList roomList = new RoomLinkedList(numRooms);
         roomList.randomizeRooms();
         Scanner scanner = new Scanner(System.in);
@@ -35,10 +34,5 @@ public class GameEngine {
         } else {
             System.out.println("Goodbye! You have exited the game.");
         }
-    }
-
-    public static void main(String[] args) {
-        GameEngine game = new GameEngine();
-        game.startGame();
     }
 }

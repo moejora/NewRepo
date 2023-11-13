@@ -106,12 +106,12 @@ public class BattlingRoom extends Rooms {
         System.out.println("Choose your path: 'L' to move left, 'R' to move right, 'Q' to quit");
         String userInput = scanner.nextLine().trim();
 
-        RoomLinkedList roomList = new RoomLinkedList(0);  // You might need to adjust this based on your actual RoomLinkedList initialization.
+        RoomLinkedList roomList = new RoomLinkedList(0); 
 
         if ("L".equalsIgnoreCase(userInput)) {
             roomList.moveForward(hero);
         } else if ("R".equalsIgnoreCase(userInput)) {
-            // Add logic to move right (if needed)
+
         } else if ("Q".equalsIgnoreCase(userInput)) {
             System.out.println("Quitting the game.");
         } else {
