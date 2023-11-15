@@ -60,6 +60,7 @@ public class Items extends Rooms {
 
     public void sendToNextRoom(Hero hero) {
         Scanner scanner = new Scanner(System.in);
+        
         System.out.println("Choose your path: 'L' to move left, 'R' to move right, 'Q' to quit");
         String userInput = scanner.nextLine().trim();
 
@@ -68,7 +69,7 @@ public class Items extends Rooms {
                if ("L".equalsIgnoreCase(userInput) || "R".equalsIgnoreCase(userInput)) {
                     roomList.moveForward(hero);
                 } else if ("M".equalsIgnoreCase(userInput)) {
-                    roomList.displayMap(hero);
+                    //roomList.displayMap(hero);
                 } else if ("Q".equalsIgnoreCase(userInput)) {
                     System.out.println("Quitting the game.");
                       System.exit(0);

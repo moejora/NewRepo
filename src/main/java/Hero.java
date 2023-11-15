@@ -43,7 +43,8 @@ public class Hero extends Mobs {
     }
     
     public void setCurrentRoom(Rooms room){
-    currentRoom = room;
+   // currentRoom = room;
+   this.currentRoom = currentRoom;
     }
 }
 

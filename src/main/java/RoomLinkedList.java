@@ -1,4 +1,3 @@
-
 import java.util.Random;
 
 public class RoomLinkedList {
@@ -9,71 +8,11 @@ public class RoomLinkedList {
 
     private Rooms[][] map;
 
-    public void genRooms() {
-        map = new Rooms[3][50];
-        Rooms currentRoom = head;
-        for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[i].length && currentRoom != null; j++) {
-                map[i][j] = currentRoom;
-                currentRoom = currentRoom.nextRoom;
-            }
-        }
-    }
-    
-        public void removeRoom(Rooms roomToRemove) {
-        for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[i].length; j++) {
-                if (map[i][j] == roomToRemove) {
-                    map[i][j] = null;
-                    return;
-                }
-            }
-        }
-    }
-
-
-public void displayMap(Hero hero) {
-        if (map == null) {
-            System.out.println("Map not generated.");
-            return;
-        }
-
-        for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[i].length; j++) {
-                if (map[i][j] == null) {
-                    System.out.print("[]");
-                } else {
-                    String roomType = getRoomType(map[i][j]);
-                    if (map[i][j] == hero.getCurrentRoom()) {
-                        System.out.print("-[HERO]-");
-     //                   removeRoom(map[i][j]);
-                    } else {
-                        System.out.print(" " + roomType + " ");
-                    }
-                }
-            }
-            System.out.println();
-        }
-    }
-
-    private String getRoomType(Rooms room) {
-        if (room instanceof RoomTraps) {
-            return "T";
-        } else if (room instanceof BattlingRoom) {
-            return "B";
-        } else if (room instanceof Items) {
-            return "I";
-        } else {
-            return "E"; 
-        }
-    }
-
     public RoomLinkedList(int numRooms) {
         this.head = null;
         this.tail = null;
         this.numRooms = numRooms;
         this.map = new Rooms[5][numRooms / 10];
-        genRooms();
     }
 
     public void addRooms(int roomType) {
@@ -151,4 +90,56 @@ public void displayMap(Hero hero) {
             }
         }
     }
+    public Rooms getCurrentRoom(){
+    return head;
+    }
+    
+public Rooms[][] getMap() {
+        return map;
+    }
+
+   public int getCurrentRoomRow() {
+    if (head != null) {
+        int rowIndex = 0;
+        Rooms currentRoom = head;
+
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                if (map[i][j] == currentRoom) {
+                    return rowIndex;
+                }
+            }
+            rowIndex++;
+        }
+    }
+
+    return 0;
+}
+
+public int getCurrentRoomColumn() {
+    if (head != null) {
+        Rooms currentRoom = head;
+
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                if (map[i][j] == currentRoom) {
+                    return j;
+                }
+            }
+        }
+    }
+
+    return 0;
+}
+public void genRooms() {
+    map = new Rooms[5][numRooms / 10];
+    Rooms currentRoom = head;
+
+    for (int i = 0; i < map.length; i++) {
+        for (int j = 0; j < map[i].length && currentRoom != null; j++) {
+            map[i][j] = currentRoom;
+            currentRoom = currentRoom.nextRoom;
+        }
+    }
+}
 }

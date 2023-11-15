@@ -110,7 +110,7 @@ public class BattlingRoom extends Rooms {
                if ("L".equalsIgnoreCase(userInput) || "R".equalsIgnoreCase(userInput)) {
                     roomList.moveForward(hero);
                 } else if ("M".equalsIgnoreCase(userInput)) {
-                    roomList.displayMap(hero);
+                   // roomList.displayMap(hero);
                 } else if ("Q".equalsIgnoreCase(userInput)) {
                     System.out.println("Quitting the game.");
                       System.exit(0);
