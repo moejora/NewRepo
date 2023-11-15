@@ -65,14 +65,15 @@ public class Items extends Rooms {
 
         RoomLinkedList roomList = new RoomLinkedList(0);
 
-        if ("L".equalsIgnoreCase(userInput)) {
-            roomList.moveForward(hero);
-        } else if ("R".equalsIgnoreCase(userInput)) {
-    
-        } else if ("Q".equalsIgnoreCase(userInput)) {
-            System.out.println("Quitting the game.");
-        } else {
-            System.out.println("Invalid input. Please choose 'L', 'R', or 'Q'.");
-        }
-    }
+               if ("L".equalsIgnoreCase(userInput) || "R".equalsIgnoreCase(userInput)) {
+                    roomList.moveForward(hero);
+                } else if ("M".equalsIgnoreCase(userInput)) {
+                    roomList.displayMap(hero);
+                } else if ("Q".equalsIgnoreCase(userInput)) {
+                    System.out.println("Quitting the game.");
+                      System.exit(0);
+                } else {
+                    System.out.println("Invalid input. Please choose 'L', 'R', 'M', or 'Q'.");
+                }
+            }
 }

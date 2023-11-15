@@ -20,15 +20,16 @@ public class GameEngine {
                 System.out.println("Choose your path: 'L' to move left, 'R' to move right, 'Q' to quit");
                 userInput = scanner.nextLine().trim();
 
-                if ("L".equalsIgnoreCase(userInput)) {
+                
+                if ("L".equalsIgnoreCase(userInput) || "R".equalsIgnoreCase(userInput)) {
                     roomList.moveForward(hero);
-                } else if ("R".equalsIgnoreCase(userInput)) {
-                    roomList.moveForward(hero);
+                } else if ("M".equalsIgnoreCase(userInput)) {
+                    roomList.displayMap(hero);
                 } else if ("Q".equalsIgnoreCase(userInput)) {
                     System.out.println("Quitting the game.");
                     continueGame = false;
                 } else {
-                    System.out.println("Invalid input. Please choose 'L', 'R', or 'Q'.");
+                    System.out.println("Invalid input. Please choose 'L', 'R', 'M', or 'Q'.");
                 }
             }
         } else {

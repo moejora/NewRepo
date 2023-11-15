@@ -7,10 +7,73 @@ public class RoomLinkedList {
     Rooms tail;
     int numRooms;
 
+    private Rooms[][] map;
+
+    public void genRooms() {
+        map = new Rooms[3][50];
+        Rooms currentRoom = head;
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length && currentRoom != null; j++) {
+                map[i][j] = currentRoom;
+                currentRoom = currentRoom.nextRoom;
+            }
+        }
+    }
+    
+        public void removeRoom(Rooms roomToRemove) {
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                if (map[i][j] == roomToRemove) {
+                    map[i][j] = null;
+                    return;
+                }
+            }
+        }
+    }
+
+
+public void displayMap(Hero hero) {
+        if (map == null) {
+            System.out.println("Map not generated.");
+            return;
+        }
+
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                if (map[i][j] == null) {
+                    System.out.print("[]");
+                } else {
+                    String roomType = getRoomType(map[i][j]);
+                    if (map[i][j] == hero.getCurrentRoom()) {
+                        System.out.print("-[HERO]-");
+     //                   removeRoom(map[i][j]);  // Remove the room after displaying it
+                    } else {
+                        System.out.print(" " + roomType + " ");
+                    }
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    private String getRoomType(Rooms room) {
+        if (room instanceof RoomTraps) {
+            return "T";
+        } else if (room instanceof BattlingRoom) {
+            return "B";
+        } else if (room instanceof Items) {
+            return "I";
+        } else {
+            return "E"; // Handle other room types as needed
+        }
+    }
+
     public RoomLinkedList(int numRooms) {
         this.head = null;
         this.tail = null;
         this.numRooms = numRooms;
+        this.map = new Rooms[5][numRooms / 10];
+        genRooms();
     }
 
     public void addRooms(int roomType) {
@@ -32,7 +95,7 @@ public class RoomLinkedList {
         } else {
             tail.nextRoom = newRoom;
             tail = newRoom;
-            tail.nextRoom = head;  
+            tail.nextRoom = head;
         }
     }
 
@@ -45,7 +108,7 @@ public class RoomLinkedList {
             addRooms(roomType);
         }
     }
-    
+
     public void showRoom(Hero hero, boolean moveFoward) {
         Rooms currentRoom = head;
 
@@ -65,14 +128,15 @@ public class RoomLinkedList {
             }
         }
     }
+
     
-    public void moveFoward(Hero hero){
-    if(head != null){
-    head = head.nextRoom;
-    if(head != null){
-    head.enterRoom(hero);
-    }
-    }
+    public void moveFoward(Hero hero) {
+        if (head != null) {
+            head = head.nextRoom;
+            if (head != null) {
+                head.enterRoom(hero);
+            }
+        }
     }
 
     public void dispayRooms(Hero hero) {
@@ -80,11 +144,11 @@ public class RoomLinkedList {
     }
 
     void moveForward(Hero hero) {
-     if(head != null){
-    head = head.nextRoom;
-    if(head != null){
-    head.enterRoom(hero);
-    }
-    }
+        if (head != null) {
+            head = head.nextRoom;
+            if (head != null) {
+                head.enterRoom(hero);
+            }
+        }
     }
 }

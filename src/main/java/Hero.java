@@ -1,7 +1,8 @@
 public class Hero extends Mobs {
     private int battleCount;
-    
     private int xp;
+    private Rooms currentRoom;
+    
     public Hero(int h, int a, int d, int s, int m, int l, int x) {
         super(h, a, d, s, m, l, x);
         xp = 0;
@@ -35,6 +36,14 @@ public class Hero extends Mobs {
 
     void incrementBattleCount() {
         battleCount++;
+    }
+    
+    public Rooms getCurrentRoom(){
+    return currentRoom;
+    }
+    
+    public void setCurrentRoom(Rooms room){
+    currentRoom = room;
     }
 }
 
