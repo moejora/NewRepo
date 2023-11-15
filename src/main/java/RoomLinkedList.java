@@ -46,7 +46,7 @@ public void displayMap(Hero hero) {
                     String roomType = getRoomType(map[i][j]);
                     if (map[i][j] == hero.getCurrentRoom()) {
                         System.out.print("-[HERO]-");
-     //                   removeRoom(map[i][j]);  // Remove the room after displaying it
+     //                   removeRoom(map[i][j]);
                     } else {
                         System.out.print(" " + roomType + " ");
                     }
@@ -64,7 +64,7 @@ public void displayMap(Hero hero) {
         } else if (room instanceof Items) {
             return "I";
         } else {
-            return "E"; // Handle other room types as needed
+            return "E"; 
         }
     }
 
